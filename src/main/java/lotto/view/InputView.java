@@ -9,6 +9,8 @@ public class InputView {
         return Console.readLine();
     }
 
+    public static String
+
     public static int inputToInt(String input) {
        return Integer.parseInt(input);
     }
