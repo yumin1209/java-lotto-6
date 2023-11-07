@@ -3,6 +3,7 @@ package lotto;
 import lotto.model.Lotto;
 import lotto.model.LottoCount;
 import lotto.model.LottoTicket;
+import lotto.view.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -46,4 +47,5 @@ class LottoTest {
 
         assertEquals(lottoTickets.size(), 10);
     }
+
 }
