@@ -8,8 +8,7 @@ public class InputView {
         System.out.println("구입금액을 입력해 주세요.");
         return Console.readLine();
     }
-
-    public static int inputToInt(String input) {
-       return Integer.parseInt(input);
+    public static int inputToInt(String input){
+        return Integer.parseInt(input);
     }
 }
