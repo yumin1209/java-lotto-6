@@ -48,4 +48,10 @@ class LottoTest {
         assertEquals(lottoTickets.size(), 10);
     }
 
+    @DisplayName("로또 번호 중복 예외 발생하는지")
+    @Test
+    void 로또_번호_중복_예외발생(){
+        assertThatThrownBy(() -> Lotto.validateBonusNumber(List.of(1,2,3,4,5,6),6))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
