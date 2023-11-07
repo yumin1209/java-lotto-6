@@ -1,12 +1,15 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class LottoCount {
-    private static final int LOTTO_MIN_AMOUNT = 1000;
     private final int count;
 
     public LottoCount(int amount) {
@@ -14,9 +17,6 @@ public class LottoCount {
         this.count = amount;
     }
 
-    public int calculateLottoCount() {
-        return count / LOTTO_MIN_AMOUNT ;
-    }
 
     private void validateAmount(int amount) {
         validateNumber(amount);
@@ -32,8 +32,19 @@ public class LottoCount {
     }
 
     private void validateDivisible(int amount) {
-        if (amount % LOTTO_MIN_AMOUNT != 0) {
+        if (amount % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위로만 구매 가능합니다.");
         }
+    }
+
+    @DisplayName("구매 갯수만큼 티켓이 발행되는지")
+    @Test
+    void createLottoTickets() {
+        int userMoney = 10000;
+        LottoTicket lottoTicket = new LottoTicket(userMoney);
+
+        List<List<Integer>> lottoTickets = lottoTicket.createLottoTickets();
+
+        assertEquals(lottoTickets.size(), 10);
     }
 }

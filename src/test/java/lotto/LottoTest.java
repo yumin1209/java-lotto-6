@@ -2,14 +2,16 @@ package lotto;
 
 import lotto.model.Lotto;
 import lotto.model.LottoCount;
+import lotto.model.LottoTicket;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -29,8 +31,19 @@ class LottoTest {
 
     @DisplayName("1000으로 나누어 떨어지지 않는 금액일때 예외 발생")
     @Test
-    void LottoCountTest(){
+    void LottoCountTest() {
         int userMoney = 1234;
-        assertThatThrownBy(()-> new LottoCount(userMoney)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new LottoCount(userMoney)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구매 갯수만큼 티켓이 발행되는지")
+    @Test
+    void createLottoTickets() {
+        int userMoney = 10000;
+        LottoTicket lottoTicket = new LottoTicket(userMoney);
+
+        List<List<Integer>> lottoTickets = lottoTicket.createLottoTickets();
+
+        assertEquals(lottoTickets.size(), 10);
     }
 }
