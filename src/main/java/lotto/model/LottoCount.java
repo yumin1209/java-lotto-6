@@ -1,14 +1,5 @@
 package lotto.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class LottoCount {
     private final int count;
 
@@ -16,7 +7,6 @@ public class LottoCount {
         validateAmount(amount);
         this.count = amount;
     }
-
 
     private void validateAmount(int amount) {
         validateNumber(amount);
@@ -26,7 +16,7 @@ public class LottoCount {
     private static int validateNumber(int amount) {
         try {
             return amount;
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 금액은 숫자만 가능합니다.");
         }
     }
@@ -37,14 +27,4 @@ public class LottoCount {
         }
     }
 
-    @DisplayName("구매 갯수만큼 티켓이 발행되는지")
-    @Test
-    void createLottoTickets() {
-        int userMoney = 10000;
-        LottoTicket lottoTicket = new LottoTicket(userMoney);
-
-        List<List<Integer>> lottoTickets = lottoTicket.createLottoTickets();
-
-        assertEquals(lottoTickets.size(), 10);
-    }
 }
