@@ -4,11 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    public static String amountInput() {
+    public static int amountInput() {
         System.out.println("구입금액을 입력해 주세요.");
-        return Console.readLine();
+        return Integer.parseInt(Console.readLine());
     }
-    public static int inputToInt(String input){
-        return Integer.parseInt(input);
-    }
+
 }
