@@ -18,6 +18,17 @@ public class Lotto {
         return numbers;
     }
 
+    public int countMatch(Lotto winningLotto) {
+        return (int) numbers.stream().
+                filter(winningLotto::containNumber).
+                count();
+    }
+
+    public boolean containNumber(int number) {
+
+        return numbers.contains(number);
+    }
+
     private void isSixNumber(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해 주세요.");
